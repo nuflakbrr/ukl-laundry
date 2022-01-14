@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Naufal Akbar Nugroho">
-    <meta name="description" content="Create Web Contact App with Node.js Web Server">
+    <meta name="description" content="Create Web Laundry App with PHP Native">
     <meta property="og:title" content="Masuk Akun | UKL Laundry">
-    <meta property="og:description" content="Create Web Contact App with Node.js Web Server">
+    <meta property="og:description" content="Create Web Laundry App with PHP Native">
     <!-- <meta property="og:url" content="/this-page.html"> -->
     <!-- <meta property="og:site_name" content="Your Site Name"> -->
     <!-- <link rel="icon" type="image/svg+xml" href="../public/favicon-org.ico"> -->
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
-    <?php include('components/navbar.php') ?>
     <div class="min-h-screen bg-gray-900 py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>

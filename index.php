@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Naufal Akbar Nugroho">
-    <meta name="description" content="Create Web Contact App with Node.js Web Server">
+    <meta name="description" content="Create Web Laundry App with PHP Native">
     <meta property="og:title" content="UKL Laundry | Naufal Akbar Nugroho">
-    <meta property="og:description" content="Create Web Contact App with Node.js Web Server">
+    <meta property="og:description" content="Create Web Laundry App with PHP Native">
     <!-- <meta property="og:url" content="/this-page.html"> -->
     <!-- <meta property="og:site_name" content="Your Site Name"> -->
     <!-- <link rel="icon" type="image/svg+xml" href="../public/favicon-org.ico"> -->
@@ -31,7 +31,7 @@
                                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                     <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
-                                <span class="title-font font-medium">Register</span>
+                                <span class="title-font font-medium">Register Employee</span>
                             </div>
                         </a>
                     </div>
@@ -42,30 +42,45 @@
                                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                     <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
-                                <span class="title-font font-medium">Login</span>
+                                <span class="title-font font-medium">Login, Logout Employee</span>
                             </div>
                         </a>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                            <span class="title-font font-medium">Logout</span>
-                        </div>
+                        <a href="login.php">
+                            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                    <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                <span class="title-font font-medium">CRUD Employee (Admin side)</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                            <span class="title-font font-medium">test</span>
-                        </div>
+                        <a href="login.php">
+                            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                    <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                <span class="title-font font-medium">CRUD Outlet (Admin side)</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
-                        <a href="index.php?content=register_customer">
+                        <a href="login.php">
+                            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                    <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                <span class="title-font font-medium">CRUD Service Type (Admin side)</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-2 sm:w-1/2 w-full">
+                        <a href="register-customer.php">
                             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
@@ -82,7 +97,18 @@
                                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                     <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
-                                <span class="title-font font-medium">Register Outlet</span>
+                                <span class="title-font font-medium">Transaction</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-2 sm:w-1/2 w-full">
+                        <a href="index.php?content=register_outlet">
+                            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                    <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                <span class="title-font font-medium">Generate Report</span>
                             </div>
                         </a>
                     </div>

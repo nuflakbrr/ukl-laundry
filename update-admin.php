@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Registrasi Akun | UKL Laundry</title>
+    <title>Update Data Akun | UKL Laundry</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Naufal Akbar Nugroho">
@@ -24,39 +24,50 @@
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
                     <div>
-                        <h1 class="text-2xl font-semibold">Silakan Masukkan Data Anda!</h1>
+                        <h1 class="text-2xl font-semibold">Silakan Masukkan Data!</h1>
                     </div>
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                            <form action="utils/process-regist.php" method="post">
+                            <?php
+                                include ('sql/db-laundry.php');
+                                $qry_get=mysqli_query($con,"select * from user where name = '".$_GET['name']."'");
+                                $dt_get=mysqli_fetch_array($qry_get);
+                            ?>
+                            <form action="utils/process-update-admin.php" method="post">
                                 <div class="relative">
-                                    <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
+                                    <input autocomplete="off" id="name" name="name" type="text" value="<?=$dt_get['name'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
                                     <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" id="username" name="username" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Username" />
+                                    <input autocomplete="off" id="username" name="username" type="text" value="<?=$dt_get['username'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Username" />
                                     <label for="username" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Username</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" id="password" name="password" type="password" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Password" />
+                                    <input autocomplete="off" id="password" name="password" type="text" value="<?=$dt_get['password'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Password" />
                                     <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                 </div>
                                 <div class="relative mt-5">
                                     <label for="roles" class="peer h-10 w-full text-gray-600">Roles</label>
+                                    <?php 
+                                        $arr_roles=array('admin'=>'admin','cashier'=>'cashier', 'owner'=>'owner');
+                                    ?>
                                     <select name="roles" id="roles" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                        <option value="choose" disabled selected>Pilih Jabatan</option>
-                                        <option value="admin">admin</option>
-                                        <option value="cashier">cashier</option>
-                                        <option value="owner">owner</option>
+                                        <option disabled>Pilih Jabatan</option>
+                                        <?php foreach ($arr_roles as $key_roles => $val_roles):
+                                            if($key_roles==$dt_get['role']){
+                                                $selek="selected";
+                                            } else {
+                                                $selek="";
+                                            }
+                                        ?>
+                                            <option value="<?=$key_roles?>" <?=$selek?>><?=$val_roles?></option>
+                                        <?php endforeach ?>
                                     </select>
                                 </div>
                                 <div class="relative mt-5">
-                                    <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Daftar Akun</button>
+                                    <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Update Data Akun</button>
                                 </div>
                             </form>
-                            <div class="items-center justify-center mx-auto text-center mt-5">
-                                <p class="text-md">Sudah memiliki akun? <a href="login.php" class="underline text-blue-600 hover:text-blue-700">Masuk!</a></p>
-                            </div>
                         </div>
                     </div>
                 </div>

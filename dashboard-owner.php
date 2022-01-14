@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dashboard Admin | UKL Laundry</title>
+    <title>Dashboard Owner | UKL Laundry</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Naufal Akbar Nugroho">
@@ -32,7 +32,7 @@
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
-      <?php include ('utils/layouts/dashboard-admin.php') ?>
+      <?php include ('utils/layouts/dashboard-owner.php') ?>
     
       <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
     
@@ -253,8 +253,8 @@
               </div>
             </div>
           </div>
+          <!-- ./Recent Activities -->
         </div>
-        <!-- ./Recent Activities -->
       </div>
     </div>
   </div>    
