@@ -12,7 +12,6 @@
         </button>
       </div>
       <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-gray-600 focus:bg-gray-600 focus:text-white hover:text-white text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="register.php">Register <i class="bi bi-person-plus-fill"></i></a>
         <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-gray-600 focus:bg-gray-600 focus:text-white hover:text-white text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="login.php">Login <i class="bi bi-box-arrow-in-right"></i></a>
         <!-- <div @click.away="open = false" class="relative" x-data="{ open: true }">
           <button @click="open = !open" class="flex flex-row text-gray-900 bg-gray-200 items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
@@ -59,17 +58,3 @@
     </div>
   </div>
 </div>
-
-<!-- <header class="bg-gray-900 text-white body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a href="index.php" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      <span class="ml-3 text-xl text-white">UKL Laundry</span>
-    </a>
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center cursor-pointer">
-      <a class="mr-5 hover:text-gray-400">First Link</a>
-      <a class="mr-5 hover:text-gray-400">Second Link</a>
-      <a class="mr-5 hover:text-gray-400">Third Link</a>
-      <a class="mr-5 hover:text-gray-400">Fourth Link</a>
-    </nav>
-  </div>
-</header> -->

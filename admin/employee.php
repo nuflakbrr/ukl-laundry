@@ -32,7 +32,7 @@
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
-      <?php include ('../utils/layouts/employee.php') ?>
+      <?php include ('../utils/layouts/dashboard-admin.php') ?>
     
       <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
         <!-- Client Table -->
@@ -77,9 +77,9 @@
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['role'] ?></td>
                     <td class="px-4 py-3 text-sm">
-                      <a href="../update-admin.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-pencil-square"></i> Ubah</a>
+                      <a href="update-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-pencil-square"></i> Ubah</a>
                       |
-                      <a href="../utils/process-delete-admin.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="bi bi-trash"></i> Hapus</a>
+                      <a href="../utils/process-delete-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="bi bi-trash"></i> Hapus</a>
                     </td>
                   </tr>
                   <?php 
@@ -89,7 +89,7 @@
               </table>
             </div>
             <div class="grid px-4 py-3 font-semibold uppercase border-t border-gray-700 sm:grid-cols-4 bg-gray-800">
-              <a href="../register.php" class="flex mx-auto col-end-6 text-white bg-green-700 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-sm">Tambah Karyawan</a>
+              <a href="register-employee.php" class="flex mx-auto col-end-6 text-white bg-green-700 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-sm">Tambah Karyawan</a>
             </div>
           </div>
         </div>

@@ -29,11 +29,11 @@
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                             <?php
-                                include ('sql/db-laundry.php');
+                                include ('../sql/db-laundry.php');
                                 $qry_get=mysqli_query($con,"select * from user where name = '".$_GET['name']."'");
                                 $dt_get=mysqli_fetch_array($qry_get);
                             ?>
-                            <form action="utils/process-update-admin.php" method="post">
+                            <form action="../utils/process-update-employee.php" method="post">
                                 <div class="relative">
                                     <input autocomplete="off" id="name" name="name" type="text" value="<?=$dt_get['name'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
                                     <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>

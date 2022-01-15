@@ -28,7 +28,7 @@
                     </div>
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                            <form action="utils/process-regist.php" method="post">
+                            <form action="../utils/process-register-employee.php" method="post">
                                 <div class="relative">
                                     <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
                                     <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
@@ -54,9 +54,6 @@
                                     <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Daftar Akun</button>
                                 </div>
                             </form>
-                            <div class="items-center justify-center mx-auto text-center mt-5">
-                                <p class="text-md">Sudah memiliki akun? <a href="login.php" class="underline text-blue-600 hover:text-blue-700">Masuk!</a></p>
-                            </div>
                         </div>
                     </div>
                 </div>

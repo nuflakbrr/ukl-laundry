@@ -39,9 +39,6 @@
                                     <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700"><i class="bi bi-box-arrow-in-right"></i> Masuk</button>
                                 </div>
                             </form>
-                            <div class="items-center justify-center mx-auto text-center mt-5">
-                                <p class="text-md">Belum memiliki akun? <a href="register.php" class="underline text-blue-600 hover:text-blue-700">Daftar!</a></p>
-                            </div>
                         </div>
                     </div>
                 </div>
