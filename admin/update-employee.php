@@ -35,8 +35,8 @@
                             ?>
                             <form action="../utils/process-update-employee.php" method="post">
                                 <div class="relative">
-                                    <input autocomplete="off" id="name" name="name" type="text" value="<?=$dt_get['name'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
-                                    <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
+                                    <input autocomplete="off" id="name" name="name" type="text" value="<?=$dt_get['name'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Nama" />
+                                    <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Nama</label>
                                 </div>
                                 <div class="relative mt-5">
                                     <input autocomplete="off" id="username" name="username" type="text" value="<?=$dt_get['username'] ?>" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Username" />
@@ -47,9 +47,9 @@
                                     <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <label for="roles" class="peer h-10 w-full text-gray-600">Roles</label>
+                                    <label for="roles" class="peer h-10 w-full text-gray-600">Jabatan</label>
                                     <?php 
-                                        $arr_roles=array('admin'=>'admin','cashier'=>'cashier', 'owner'=>'owner');
+                                        $arr_roles=array('admin'=>'admin','owner'=>'owner', 'cashier'=>'cashier');
                                     ?>
                                     <select name="roles" id="roles" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Jabatan</option>
@@ -74,6 +74,6 @@
             </div>
         </div>
     </div>
-    <?php include('components/footer.php') ?>
+    <?php include('../components/footer.php') ?>
 </body>
 </html>

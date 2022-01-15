@@ -12,9 +12,9 @@
             $query = "update user set name='$name', username='$username', password='$password', role='$roles' where name='$name'";
             $update=mysqli_query($con,$query);
             if($update){
-                echo "<script>alert('Sukses update data!');location.href='../admin/employee.php';</script>";
+                echo "<script>alert('Sukses update data karyawan!');location.href='../admin/employee.php';</script>";
             } else {
-            echo "<script>alert('Gagal update data!');location.href='../admin/update-employee.php?name=".$name."';</script>";
+            echo "<script>alert('Gagal update data karyawan! silakan coba kembali!');location.href='../admin/update-employee.php?name=".$name."';</script>";
             } 
         }
     }

@@ -14,7 +14,7 @@
             if($insert){
                 echo "<script>alert('Sukses menambahkan pelanggan!');location.href='../login.php';</script>";
             } else {
-                echo "<script>alert('Gagal menambahkan pelanggan, silakan coba kembali!');location.href='../register-customer.php';</script>";
+                echo "<script>alert('Gagal menambahkan pelanggan! silakan coba kembali!');location.href='../register-customer.php';</script>";
             }
         }
     }

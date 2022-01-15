@@ -30,7 +30,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">Register Employee</span>
+                            <span class="title-font font-medium">Daftar Akun Karyawan</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -39,7 +39,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">Login, Logout Employee</span>
+                            <span class="title-font font-medium">Login, dan Logout Karyawan</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -48,7 +48,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">CRUD Employee (Admin side)</span>
+                            <span class="title-font font-medium">CRUD Karyawan (Admin)</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -57,7 +57,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">CRUD Outlet (Admin side)</span>
+                            <span class="title-font font-medium">CRUD Outlet (Admin)</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -66,7 +66,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">CRUD Service Type (Admin side)</span>
+                            <span class="title-font font-medium">CRUD Tipe Jasa Produk (Admin)</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -75,7 +75,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">Register Customer</span>
+                            <span class="title-font font-medium">Register Pelanggan</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -84,7 +84,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">Transaction</span>
+                            <span class="title-font font-medium">Transaksi</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -93,7 +93,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium">Generate Report</span>
+                            <span class="title-font font-medium">Download hasil Laporan</span>
                         </div>
                     </div>
                     <a href="https://github.com/nuflakbrr/ukl-laundry" target="_blank" class="flex mx-auto mt-16 text-white bg-blue-600 border-0 py-2 px-8 focus:outline-none hover:bg-blue-700 rounded text-lg">Source Code</a>

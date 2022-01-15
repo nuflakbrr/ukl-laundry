@@ -17,18 +17,34 @@
                 $_SESSION['role']=$dt_login['role'];
                 $_SESSION['status_login']=true;
 
-                // conditional redirect for role
-                if($_SESSION['role']=='admin'){
-                    echo "<script>location.href='../admin/dashboard-admin.php';</script>";
-                } else if($_SESSION['role']=='cashier'){
-                    echo "<script>location.href='../cashier/dashboard-cashier.php';</script>";
-                } else if($_SESSION['role']=='owner'){
-                    echo "<script>location.href='../owner/dashboard-owner.php';</script>";
-                } else {
-                    echo "<script>alert('Username atau Password tidak benar!');location.href='../login.php';</script>";
+                // conditional redirect for role switch case
+                switch($_SESSION['role']){
+                    case 'admin':
+                        header("location:../admin/dashboard-admin.php");
+                        break;
+                    case 'cashier':
+                        header("location:../cashier/dashboard-cashier.php");
+                        break;
+                    case 'owner':
+                        header("location:../owner/dashboard-owner.php");
+                        break;
+                    default:
+                        header("location:../login.php");
+                        break;
                 }
+
+                // conditional redirect for role if else
+                // if($_SESSION['role']=='admin'){
+                //     echo "<script>location.href='../admin/dashboard-admin.php';</script>";
+                // } else if($_SESSION['role']=='cashier'){
+                //     echo "<script>location.href='../cashier/dashboard-cashier.php';</script>";
+                // } else if($_SESSION['role']=='owner'){
+                //     echo "<script>location.href='../owner/dashboard-owner.php';</script>";
+                // } else {
+                //     echo "<script>alert('Username atau Password tidak benar!' silakan coba kembali!);location.href='../login.php';</script>";
+                // }
             } else {
-                echo "<script>alert('Username dan Password tidak benar!');location.href='../login.php';</script>";
+                echo "<script>alert('Username dan Password tidak benar!' silakan coba kembali!);location.href='../login.php';</script>";
             }
         }
     }
