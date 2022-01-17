@@ -43,37 +43,40 @@
                 <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div class="max-w-md mx-auto">
                         <div>
-                            <h1 class="text-2xl font-semibold">Silakan Masukkan Data Pelanggan!</h1>
+                            <h1 class="text-2xl font-semibold">Silakan Masukkan Data Produk!</h1>
                         </div>
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                                <form action="../utils/process-register-customer.php" method="post">
-                                    <div class="relative">
-                                        <input autocomplete="off" id="outlet" name="outlet" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Outlet" />
-                                        <label for="outlet" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Outlet</label>
-                                    </div>
+                                <?php
+                                    include ('../sql/db-laundry.php');
+                                    $qry_get=mysqli_query($con,"select * from package where type = '".$_GET['type']."'");
+                                    $dt_get=mysqli_fetch_array($qry_get);
+                                ?>
+                                <form action="../utils/process-update-product.php" method="post">
                                     <div class="relative mt-5">
-                                        <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
-                                        <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
-                                    </div>
-                                    <div class="relative mt-5">
-                                        <input autocomplete="off" id="address" name="address" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Address" />
-                                        <label for="address" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Address</label>
-                                    </div>
-                                    <div class="relative mt-5">
-                                        <label for="gender" class="peer h-10 w-full text-gray-600">Gender</label>
-                                        <select name="gender" id="gender" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                            <option value="choose" disabled selected>Pilih Jenis Kelamin</option>
-                                            <option value="male">male</option>
-                                            <option value="female">female</option>
+                                        <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
+                                        <?php 
+                                          $arr_type=array('kiloan'=>'kiloan','selimut'=>'selimut', 'bed_cover'=>'bed_cover', 'kaos'=> 'kaos');
+                                        ?>
+                                        <select name="type" id="type" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
+                                            <option disabled>Pilih Jenis Tipe Jasa</option>
+                                            <?php foreach ($arr_type as $key_type => $val_type):
+                                              if($key_type==$dt_get['type']){
+                                                  $selek="selected";
+                                              } else {
+                                                  $selek="";
+                                              }
+                                            ?>
+                                              <option value="<?=$key_type?>" <?=$selek?>><?=$val_type?></option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="relative mt-5">
-                                        <input autocomplete="off" id="phone" name="phone" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Phone Number" />
-                                        <label for="phone" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Phone Number</label>
+                                        <input autocomplete="off" id="price" name="price" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Harga" value="<?=$dt_get['price'] ?>" />
+                                        <label for="price" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Harga</label>
                                     </div>
                                     <div class="relative mt-5">
-                                        <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Daftar Pelanggan</button>
+                                        <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Daftar Produk</button>
                                     </div>
                                 </form>
                             </div>

@@ -15,10 +15,10 @@ Create a UKL Laundry Study Case with PHP Native.
 - [x] Login 
 - [x] Logout
 - [x] CRUD Karyawan 
-- [ ] CRUD Outlet 
-- [ ] CRUD Tipe Jasa 
+- [x] CRUD Outlet 
+- [x] CRUD Tipe Jasa 
 - [x] Registrasi Pelanggan 
-- [ ] Transaksi 
+- [ ] Transaksi
 - [ ] Generate Laporan
 
 **Owner Side**

@@ -37,42 +37,37 @@
       <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
         <!-- Client Table -->
         <div class="mt-4 mx-4">
-          <h1 class="text-xl font-bold uppercase mb-5">Daftar Outlet</h1>
+          <h1 class="text-xl font-bold uppercase mb-5">Daftar Produk</h1>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
               <table class="w-full">
                 <thead>
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">Nama Outlet</th>
-                    <th class="px-4 py-3">No. Telepon</th>
-                    <th class="px-4 py-3">Alamat</th>
+                    <th class="px-4 py-3">Jenis Produk</th>
+                    <th class="px-4 py-3">Harga</th>
                     <th class="px-4 py-3">Aksi</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
                     include ('../sql/db-laundry.php');
-                    $qry_outlet = mysqli_query($con,"select * from outlet");
+                    $qry_prod = mysqli_query($con,"select * from package");
                     $no=0;
-                    while($data = mysqli_fetch_array($qry_outlet)){
+                    while($data = mysqli_fetch_array($qry_prod)){
                     $no++;
                   ?>
                   <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                     <td class="px-4 py-3">
                       <div class="flex items-center text-sm">
                         <div>
-                          <p class="font-semibold"><?=$data['branch'] ?></p>
+                          <p class="font-semibold"><?=$data['type'] ?></p>
                         </div>
                       </div>
                     </td>
-                    <td class="px-4 py-3 text-sm"><?=$data['phone'] ?></td>
-                    <td class="px-4 py-3 text-xs">
-                      <!-- <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> Approved </span> -->
-                      <?=$data['address'] ?>
-                    </td>
+                    <td class="px-4 py-3 text-sm">Rp. <?=$data['price'] ?></td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
-                      <a href="update-outlet.php?name=<?=$data['branch']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-pencil-square"></i> Ubah</a>
-                      <a href="../utils/process-delete-outlet.php?name=<?=$data['branch']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="bi bi-trash"></i> Hapus</a>
+                      <a href="update-product.php?type=<?=$data['type']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-pencil-square"></i> Ubah</a>
+                      <a href="../utils/process-delete-product.php?type=<?=$data['type']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="bi bi-trash"></i> Hapus</a>
                     </td>
                   </tr>
                   <?php 
@@ -82,7 +77,7 @@
               </table>
             </div>
             <div class="grid px-4 py-3 font-semibold uppercase border-t border-gray-700 sm:grid-cols-4 bg-gray-800">
-              <a href="register-outlet.php" class="flex mx-auto col-end-6 text-white bg-green-700 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-sm">Tambah Outlet</a>
+              <a href="register-product.php" class="flex mx-auto col-end-6 text-white bg-green-700 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-sm">Tambah Produk</a>
             </div>
           </div>
         </div>

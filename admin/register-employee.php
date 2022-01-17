@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Registrasi Akun | UKL Laundry</title>
+    <title>Dashboard Admin | UKL Laundry</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Naufal Akbar Nugroho">
     <meta name="description" content="Create Web Laundry App with PHP Native">
-    <meta property="og:title" content="Registrasi Akun | UKL Laundry">
+    <meta property="og:title" content="UKL Laundry | Naufal Akbar Nugroho">
     <meta property="og:description" content="Create Web Laundry App with PHP Native">
     <!-- <meta property="og:url" content="/this-page.html"> -->
     <!-- <meta property="og:site_name" content="Your Site Name"> -->
@@ -14,9 +14,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+      /* Custom style */
+      .header-right {
+          width: calc(100% - 3.5rem);
+      }
+      .sidebar:hover {
+          width: 16rem;
+      }
+      @media only screen and (min-width: 768px) {
+          .header-right {
+              width: calc(100% - 16rem);
+          }        
+      }
+    </style>
 </head>
 <body>
-    <div class="min-h-screen bg-gray-900 py-6 flex flex-col justify-center sm:py-12">
+<div x-data="setup()" :class="{ 'dark': isDark }">
+    <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black">
+      <?php include ('../utils/layouts/dashboard-admin.php') ?>
+    
+      <div class="h-full ml-14 mt-14 md:ml-64">
+      <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div
                 class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -60,6 +79,33 @@
             </div>
         </div>
     </div>
-    <?php include('../components/footer.php') ?>
+      </div>
+    </div>
+  </div>    
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+  <script>
+    const setup = () => {
+      const getTheme = () => {
+        if (window.localStorage.getItem('dark')) {
+          return JSON.parse(window.localStorage.getItem('dark'))
+        }
+        return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      }
+
+      const setTheme = (value) => {
+        window.localStorage.setItem('dark', value)
+      }
+
+      return {
+        loading: true,
+        isDark: getTheme(),
+        toggleTheme() {
+          this.isDark = !this.isDark
+          setTheme(this.isDark)
+        },
+      }
+    }
+  </script>
 </body>
 </html>

@@ -76,9 +76,8 @@
                       <?=$data['password'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['role'] ?></td>
-                    <td class="px-4 py-3 text-sm">
+                    <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
                       <a href="update-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-pencil-square"></i> Ubah</a>
-                      |
                       <a href="../utils/process-delete-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="bi bi-trash"></i> Hapus</a>
                     </td>
                   </tr>
