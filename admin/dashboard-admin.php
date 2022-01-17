@@ -76,7 +76,6 @@
               <table class="w-full">
                 <thead>
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">Invoice</th>
                     <th class="px-4 py-3">Member</th>
                     <th class="px-4 py-3">Status</th>
                     <th class="px-4 py-3">Pembayaran</th>
@@ -110,7 +109,7 @@
                       <?=$data['password'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['role'] ?></td>
-                    <td class="px-4 py-3 text-sm">
+                    <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
                       <a href="update-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
                     </td>
                   </tr>
