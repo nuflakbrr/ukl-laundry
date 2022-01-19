@@ -63,7 +63,7 @@
                                 <div class="relative mt-5">
                                     <label for="roles" class="peer h-10 w-full text-gray-600">Jabatan</label>
                                     <select name="roles" id="roles" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                        <option value="choose" disabled selected>Pilih Jabatan</option>
+                                        <option  disabled selected>Pilih Jabatan</option>
                                         <option value="admin">admin</option>
                                         <option value="owner">owner</option>
                                         <option value="cashier">cashier</option>

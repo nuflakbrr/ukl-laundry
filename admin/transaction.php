@@ -43,26 +43,85 @@
                 <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div class="max-w-md mx-auto">
                         <div>
-                            <h1 class="text-2xl font-semibold text-black">Silakan Masukkan Data Produk!</h1>
+                            <h1 class="text-2xl font-semibold text-black">Silakan Masukkan Data Transaksi!</h1>
                         </div>
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                                <form action="transaction.php" method="get">
+                                  <div class="relative mt-5">
+                                    <label for="total_pckg" class="peer h-10 w-full text-gray-600">Jumlah Pemesanan</label>
+                                    <div class="flex">
+                                        <input type="number" name="total_pckg" id="total_pckg" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" value="<?=$_GET['total_pckg'] ? $_GET['total_pckg'] : 1  ?>" min="1" />
+                                        <button type="submit" class="w-24 ml-3 bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700"><i class="bi bi-arrow-clockwise"></i></button>
+                                    </div>
+                                  </div>
+                                </form>
                                 <form action="../utils/process-transaction.php" method="post">
-                                    <h1 class="text-center">INI KUMPULAN SEMUA YA GES</h1>
-                                    <!-- <div class="relative mt-5">
-                                        <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
-                                        <select name="type" id="type" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                            <option value="choose" disabled selected>Pilih Jenis Tipe Jasa</option>
-                                            <option value="kiloan">kiloan</option>
-                                            <option value="selimut">selimut</option>
-                                            <option value="bed_cover">bed cover</option>
-                                            <option value="kaos">kaos</option>
+                                    <div class="relative mt-5">
+                                        <label for="member" class="peer h-10 w-full text-gray-600">Pelanggan</label>
+                                        <select name="member" id="member" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
+                                            <option disabled>Pilih Nama Pelanggan</option>
+                                            <?php
+                                            include "../sql/db-laundry.php";
+                                            $qry_member=mysqli_query($con,"select * from member");
+                                            while($data_member=mysqli_fetch_array($qry_member)){
+                                                echo '<option value="'.$data_member['id'].'">'.$data_member['name'].'</option>';    
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="relative mt-5">
-                                        <input autocomplete="off" id="price" name="price" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Harga" />
-                                        <label for="price" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Harga</label>
-                                    </div> -->
+                                        <label for="date" class="peer h-10 w-full text-gray-600">Tanggal Pemesanan</label>
+                                        <input type="date" name="date" id="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Tanggal Pemesanan" />
+                                    </div>
+                                    <div class="relative mt-5">
+                                        <label for="deadline" class="peer h-10 w-full text-gray-600">Tanggal Selesai</label>
+                                        <input type="date" name="deadline" id="deadline" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Tanggal Selesai" />
+                                    </div>
+                                    <div class="relative mt-5">
+                                        <label for="date_pay" class="peer h-10 w-full text-gray-600">Tanggal Bayar</label>
+                                        <input type="date" name="date_pay" id="date_pay" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Tanggal Bayar" />
+                                    </div>
+                                    <div class="relative mt-5">
+                                      <label for="status" class="peer h-10 w-full text-gray-600">Status Pengerjaan</label>
+                                        <select name="status" id="status" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
+                                            <option  disabled selected>Pilih Status Pengerjaan</option>
+                                            <option value="new">baru</option>
+                                            <option value="process">proses</option>
+                                            <option value="done">selesai</option>
+                                            <option value="taken">diambil</option>
+                                        </select>
+                                    </div>
+                                    <div class="relative mt-5">
+                                      <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
+                                        <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
+                                            <option  disabled selected>Pilih Pembayaran</option>
+                                            <option value="pay">dibayar</option>
+                                            <option value="not_pay">belum dibayar</option>
+                                        </select>
+                                    </div>
+                                  <?php for($index = 0; $index < ($_GET['total_pckg'] ? $_GET['total_pckg'] : 1); $index++) : ?>
+                                    <div class="relative mt-5">
+                                        <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
+                                        <select name="id_package[]" id="id_package[]" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
+                                            <option disabled>Pilih Jenis Tipe Jasa</option>
+                                            <?php
+                                            include "../sql/db-laundry.php";
+                                            $qry_packg=mysqli_query($con,"select * from package");
+                                            while($data_packg=mysqli_fetch_array($qry_packg)){
+                                                echo '<option value="'.$data_packg['id'].'">'.$data_packg['type'].'</option>';    
+                                            }
+                                            ?>
+                                          </select>
+                                        </div>
+                                    <div class="relative mt-5">
+                                      <label for="qty" class="peer h-10 w-full text-gray-600">Kuantitas</label>
+                                      <div class="flex">
+                                        <input type="text" name="qty[]" id="qty[]" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Kuantitas" />
+                                        <span>Kg</span>
+                                      </div>
+                                    </div>
+                                  <?php endfor; ?>
                                     <div class="relative mt-5">
                                         <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Transaksi!</button>
                                     </div>

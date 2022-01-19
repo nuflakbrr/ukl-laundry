@@ -43,7 +43,11 @@
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
             </div>
             <div class="text-right">
-              <p class="text-2xl">$11,257</p>
+            <?php include ('../sql/db-laundry.php');
+                    $qry_outl = mysqli_query($con,"select * from outlet");
+                    $i = mysqli_num_rows($qry_outl);
+              ?>
+              <p class="text-2xl"><?=$i ?></p>
               <p>Outlet</p>
             </div>
           </div>
@@ -52,7 +56,11 @@
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
             </div>
             <div class="text-right">
-              <p class="text-2xl">1,257</p>
+              <?php include ('../sql/db-laundry.php');
+                    $qry_mmber = mysqli_query($con,"select * from member");
+                    $i = mysqli_num_rows($qry_mmber);
+              ?>
+              <p class="text-2xl"><?=$i ?></p>
               <p>Pelanggan</p>
             </div>
           </div>
@@ -61,7 +69,11 @@
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
             </div>
             <div class="text-right">
-              <p class="text-2xl">557</p>
+            <?php include ('../sql/db-laundry.php');
+                    $qry_trnsct = mysqli_query($con,"select * from transaction");
+                    $i = mysqli_num_rows($qry_trnsct);
+              ?>
+              <p class="text-2xl"><?=$i ?></p>
               <p>Traksaksi</p>
             </div>
           </div>
@@ -77,6 +89,8 @@
                 <thead>
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-4 py-3">Member</th>
+                    <th class="px-4 py-3">Tanggal Pemesanan</th>
+                    <th class="px-4 py-3">Tanggal Selesai</th>
                     <th class="px-4 py-3">Status</th>
                     <th class="px-4 py-3">Pembayaran</th>
                     <th class="px-4 py-3">Total Harga</th>
@@ -86,9 +100,9 @@
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
                     include ('../sql/db-laundry.php');
-                    $qry_karyawan = mysqli_query($con,"select * from user");
+                    $qry_transaction = mysqli_query($con,"select * from transaction");
                     $no=0;
-                    while($data = mysqli_fetch_array($qry_karyawan)){
+                    while($data = mysqli_fetch_array($qry_transaction)){
                     $no++;
                   ?>
                   <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
@@ -99,18 +113,19 @@
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold"><?=$data['name'] ?></p>
+                          <p class="font-semibold"><?=$data['id_member'] ?></p>
                         </div>
                       </div>
                     </td>
-                    <td class="px-4 py-3 text-sm"><?=$data['username'] ?></td>
+                    <td class="px-4 py-3 text-sm"><?=$data['date'] ?></td>
+                    <td class="px-4 py-3 text-sm"><?=$data['deadline'] ?></td>
+                    <td class="px-4 py-3 text-sm"><?=$data['status'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <!-- <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> Approved </span> -->
-                      <?=$data['password'] ?>
+                      <span class="px-2 py-1 font-semibold leading-tight text-white bg-blue-700 rounded-full"><?=$data['payment'] ?></span>
                     </td>
-                    <td class="px-4 py-3 text-sm"><?=$data['role'] ?></td>
+                    <td class="px-4 py-3 text-sm"></td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
-                      <a href="update-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
+                      <a href="detail-transaction.php?name=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
                     </td>
                   </tr>
                   <?php 

@@ -52,7 +52,7 @@
                                 $qry_get=mysqli_query($con,"select * from user where name = '".$_GET['name']."'");
                                 $dt_get=mysqli_fetch_array($qry_get);
                             ?>
-                            <form action="../utils/process-register-employee.php" method="post">
+                            <form action="../utils/process-update-employee.php" method="post">
                                 <div class="relative">
                                     <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Nama" value="<?=$dt_get['name'] ?>" />
                                     <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Nama</label>
@@ -62,13 +62,13 @@
                                     <label for="username" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Username</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" id="password" name="password" type="password" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Password" value="<?=$dt_get['password'] ?>" />
+                                    <input autocomplete="off" id="password" name="password" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Password" />
                                     <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                 </div>
                                 <div class="relative mt-5">
                                     <label for="roles" class="peer h-10 w-full text-gray-600">Jabatan</label>
                                     <?php 
-                                          $arr_role=array('admin'=>'admin','owner'=>'owner', 'kasir'=>'kasir');
+                                          $arr_role=array('admin'=>'admin','owner'=>'owner', 'cashier'=>'cashier');
                                     ?>
                                     <select name="roles" id="roles" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Jabatan</option>
