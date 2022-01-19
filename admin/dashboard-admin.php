@@ -37,7 +37,7 @@
       <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
         
         <!-- Statistics Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 p-4 gap-4">
           <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
             <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
@@ -75,6 +75,19 @@
               ?>
               <p class="text-2xl"><?=$i ?></p>
               <p>Traksaksi</p>
+            </div>
+          </div>
+          <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+            <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+              <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            </div>
+            <div class="text-right">
+            <?php include ('../sql/db-laundry.php');
+                    $qry_user = mysqli_query($con,"select * from user");
+                    $i = mysqli_num_rows($qry_user);
+              ?>
+              <p class="text-2xl"><?=$i ?></p>
+              <p>Karyawan</p>
             </div>
           </div>
         </div>
@@ -125,7 +138,9 @@
                     </td>
                     <td class="px-4 py-3 text-sm"></td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
-                      <a href="detail-transaction.php?name=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
+                      <a href="detail-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
+                      <button class="px-4 py-2 text-xs rounded-full text-white bg-green-600 hover:bg-green-700" onclick="const printBtn = document.getElementById('print'); window.print();" id="print"><i class="bi bi-download"></i> Report</button>
+                      <a href="../utils/process-delete-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700"><i class="bi bi-trash"></i> Delete</a>
                     </td>
                   </tr>
                   <?php 

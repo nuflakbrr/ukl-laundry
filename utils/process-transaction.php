@@ -31,16 +31,31 @@
             }
         }
 
-        if($_POST['type'] == 'package'){
-            $id_transaction = mysqli_insert_id($con);
-            $id_package = $_POST['id_package'];
-            $insert_detail_transaction = mysqli_query($con,"insert into detail_transaction (id_transaction, id_package, qty) value ('".$id_transaction."','".$id_package."','".$qty."')");
-        } else {
-            $id_transaction = mysqli_insert_id($con);
-            $id_product = $_POST['id_product'];
-            $insert_detail_transaction = mysqli_query($con,"insert into detail_transaction (id_transaction, id_product, qty) value ('".$id_transaction."','".$id_product."','".$qty."')");
+        // insert data to table detail transaction
+        $qry_dtl_transaction = mysqli_query($con,"select * from transaction order by id desc limit 1");
+        $data_dtl_transaction = mysqli_fetch_array($qry_dtl_transaction);
+        $id_transaction = $data_dtl_transaction['id'];
+
+        for($i=0; $i<$qty; $i++){
+            $insert_dtl_transaction = mysqli_query($con,"insert into detail_transaction (id_transaction, id_package, qty) value ('".$id_transaction."','".$type[$i]."','".$qty[$i]."')");
         }
 
-        echo mysqli_error($con);
+        if($insert_dtl_transaction){
+            echo "<script>alert('Transaksi Sukses!');location.href='../admin/dashboard-admin.php';</script>";
+        } else {
+            echo "<script>alert('Transaksi Gagal! silakan coba kembali!');location.href='../admin/transaction.php?total_pckg=1';</script>";
+        }
+
+        // if($_POST['type'] == 'package'){
+        //     $id_transaction = mysqli_insert_id($con);
+        //     $id_package = $_POST['id_package'];
+        //     $insert_detail_transaction = mysqli_query($con,"insert into detail_transaction (id_transaction, id_package, qty) value ('".$id_transaction."','".$id_package."','".$qty."')");
+        // } else {
+        //     $id_transaction = mysqli_insert_id($con);
+        //     $id_product = $_POST['id_product'];
+        //     $insert_detail_transaction = mysqli_query($con,"insert into detail_transaction (id_transaction, id_product, qty) value ('".$id_transaction."','".$id_product."','".$qty."')");
+        // }
+
+        // echo mysqli_error($con);
     }
 ?>
