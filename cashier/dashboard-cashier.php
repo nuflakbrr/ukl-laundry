@@ -30,12 +30,12 @@
     </style>
 </head>
 <body>
-<div x-data="setup()" :class="{ 'dark': isDark }">
+  <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
       <?php include ('../utils/layouts/dashboard-cashier.php') ?>
-    
+      
       <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
-    
+        
         <!-- Statistics Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 p-4 gap-4">
           <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
@@ -106,6 +106,7 @@
                     <th class="px-4 py-3">Tanggal Selesai</th>
                     <th class="px-4 py-3">Pembayaran</th>
                     <th class="px-4 py-3">Status</th>
+                    <th class="px-4 py-3">Paket</th>
                     <th class="px-4 py-3">Total Harga</th>
                     <th class="px-4 py-3">Aksi</th>
                   </tr>
@@ -113,7 +114,7 @@
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
                     include ('../sql/db-laundry.php');
-                    $qry_transaction = mysqli_query($con,"select * from transaction");
+                    $qry_transaction = mysqli_query($con,"SELECT t.id, m.name as name_member, t.date, t.deadline, t.date_pay, t.status, t.payment, u.name as name_employee, p.type as package, p.price * d_t.qty as total FROM transaction t, detail_transaction d_t, package p, member m, user u WHERE t.id_member = m.id AND t.id_user = u.id AND t.id = d_t.id_transaction AND p.id = d_t.id_package");
                     $no=0;
                     while($data = mysqli_fetch_array($qry_transaction)){
                     $no++;
@@ -126,21 +127,14 @@
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold">
-                            <?php
-                              // show data name member from transaction.id_member
-                              $qry_member = mysqli_query($con,"select * from member where id='$data[id_member]'");
-                              $data_member = mysqli_fetch_array($qry_member);
-                              echo $data_member['name'];
-                            ?>
-                          </p>
+                          <p class="font-semibold"><?=$data['name_member'] ?></p>
                         </div>
                       </div>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['date'] ?></td>
                     <td class="px-4 py-3 text-sm"><?=$data['deadline'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <?php if($data['payment'] == 'not_pay'){ ?>
+                      <?php if($data['payment'] == 'not_paid'){ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Belum Lunas</span>
                       <?php }else{ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Lunas</span>
@@ -157,19 +151,16 @@
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Sudah Diambil</span>
                       <?php } ?>
                     </td>
+                    <td><?=$data['package'] ?></td>
                     <td class="px-4 py-3 text-sm">
                       Rp.
                       <?php
-                        // show data total price from table detail_transaction.qty * table package.price
-                        $qry_total = mysqli_query($con,"SELECT qty, price, price * qty AS total FROM transaction t, detail_transaction d_t, package p WHERE d_t.id_transaction = '".$data['id']."' AND d_t.id_package = p.id");
-                        echo mysqli_error($con);
-                        $data_total = mysqli_fetch_array($qry_total);
-                        $total = $data_total['total'];
-                        echo $total;
+                        echo $data['total'];
                       ?>
                     </td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
                       <a href="detail-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
+                      <!-- <a href="../utils/process-delete-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700"><i class="bi bi-trash"></i> Delete</a> -->
                     </td>
                   </tr>
                   <?php 

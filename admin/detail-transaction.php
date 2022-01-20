@@ -44,7 +44,7 @@
                 <div class="max-w-md mx-auto">
                     <div>
                         <h1 class="text-2xl font-semibold text-center print:hidden">Silakan Ubah Data Transaksi!</h1>
-                        <h1 class="text-2xl font-semibold hidden print:block print:text-center">Laporan Transaksi!</h1>
+                        <h1 class="text-2xl font-semibold hidden print:block print:text-center">Laporan Transaksi</h1>
                     </div>
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -97,7 +97,7 @@
                                 <div class="relative mt-5">
                                     <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
                                     <?php 
-                                          $arr_payment=array('pay'=>'pay','not_pay'=>'not_pay');
+                                          $arr_payment=array('paid'=>'paid','not_paid'=>'not_paid');
                                     ?>
                                     <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Status Pengerjaan</option>

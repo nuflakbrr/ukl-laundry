@@ -96,8 +96,8 @@
                                       <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
                                         <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                             <option  disabled selected>Pilih Pembayaran</option>
-                                            <option value="pay">dibayar</option>
-                                            <option value="not_pay">belum dibayar</option>
+                                            <option value="paid">dibayar</option>
+                                            <option value="not_paid">belum dibayar</option>
                                         </select>
                                     </div>
                                   <?php for($index = 0; $index < ($_GET['total_pckg'] ? $_GET['total_pckg'] : 1); $index++) : ?>

@@ -106,6 +106,7 @@
                     <th class="px-4 py-3">Tanggal Selesai</th>
                     <th class="px-4 py-3">Pembayaran</th>
                     <th class="px-4 py-3">Status</th>
+                    <th class="px-4 py-3">Paket</th>
                     <th class="px-4 py-3">Total Harga</th>
                     <th class="px-4 py-3">Aksi</th>
                   </tr>
@@ -113,7 +114,7 @@
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
                     include ('../sql/db-laundry.php');
-                    $qry_transaction = mysqli_query($con,"select * from transaction");
+                    $qry_transaction = mysqli_query($con,"SELECT t.id, m.name as name_member, t.date, t.deadline, t.date_pay, t.status, t.payment, u.name as name_employee, p.type as package, p.price * d_t.qty as total FROM transaction t, detail_transaction d_t, package p, member m, user u WHERE t.id_member = m.id AND t.id_user = u.id AND t.id = d_t.id_transaction AND p.id = d_t.id_package");
                     $no=0;
                     while($data = mysqli_fetch_array($qry_transaction)){
                     $no++;
@@ -126,21 +127,14 @@
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold">
-                            <?php
-                              // show data name member from transaction.id_member
-                              $qry_member = mysqli_query($con,"select * from member where id='$data[id_member]'");
-                              $data_member = mysqli_fetch_array($qry_member);
-                              echo $data_member['name'];
-                            ?>
-                          </p>
+                          <p class="font-semibold"><?=$data['name_member'] ?></p>
                         </div>
                       </div>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['date'] ?></td>
                     <td class="px-4 py-3 text-sm"><?=$data['deadline'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <?php if($data['payment'] == 'not_pay'){ ?>
+                      <?php if($data['payment'] == 'not_paid'){ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Belum Lunas</span>
                       <?php }else{ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Lunas</span>
@@ -157,6 +151,7 @@
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Sudah Diambil</span>
                       <?php } ?>
                     </td>
+                    <td><?=$data['package'] ?></td>
                     <td class="px-4 py-3 text-sm">
                       Rp.
                       <?php
