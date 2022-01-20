@@ -68,7 +68,7 @@
                                 <div class="relative mt-5">
                                     <label for="roles" class="peer h-10 w-full text-gray-600">Jabatan</label>
                                     <?php 
-                                          $arr_role=array('admin'=>'admin','owner'=>'owner', 'cashier'=>'cashier');
+                                          $arr_role=array('admin'=>'Admin','owner'=>'Owner', 'cashier'=>'Kasir');
                                     ?>
                                     <select name="roles" id="roles" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Jabatan</option>

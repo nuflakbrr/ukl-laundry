@@ -60,7 +60,21 @@
                     <td class="px-4 py-3">
                       <div class="flex items-center text-sm">
                         <div>
-                          <p class="font-semibold"><?=$data['type'] ?></p>
+                          <p class="font-semibold">
+                            <?php
+                              if($data['type'] == 'kiloan'){
+                                echo "Kiloan";
+                              } else if($data['type'] == 'selimut'){
+                                echo "Selimut";
+                              } else if($data['type'] == 'bed_cover'){
+                                echo "Bed Cover";
+                              } else if($data['type'] == 'kaos'){
+                                echo "Kaos";
+                              } else {
+                                echo "Tipe Jasa Produk Tidak Diketahui";
+                              }
+                            ?>
+                          </p>
                         </div>
                       </div>
                     </td>

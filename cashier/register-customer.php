@@ -60,8 +60,8 @@
                                         <label for="gender" class="peer h-10 w-full text-gray-600">Gender</label>
                                         <select name="gender" id="gender" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                             <option  disabled selected>Pilih Jenis Kelamin</option>
-                                            <option value="male">male</option>
-                                            <option value="female">female</option>
+                                            <option value="Male">Laki-laki</option>
+                                            <option value="Female">Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="relative mt-5">

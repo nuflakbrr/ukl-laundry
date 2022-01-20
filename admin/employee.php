@@ -71,11 +71,20 @@
                       </div>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['username'] ?></td>
-                    <td class="px-4 py-3 text-xs">
-                      <!-- <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> Approved </span> -->
-                      <?=$data['password'] ?>
+                    <td class="px-4 py-3 text-xs"><?=$data['password'] ?></td>
+                    <td class="px-4 py-3 text-sm">
+                      <?php
+                        if($data['role'] == 'admin'){
+                          echo "Admin";
+                        } else if($data['role'] == 'cashier'){
+                          echo "Kasir";
+                        } else if($data['role'] == 'owner'){
+                          echo "Owner";
+                        } else {
+                          echo "Jabatan Karyawan Tidak Diketahui";
+                        }
+                      ?>
                     </td>
-                    <td class="px-4 py-3 text-sm"><?=$data['role'] ?></td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
                       <a href="update-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-pencil-square"></i> Ubah</a>
                       <a href="../utils/process-delete-employee.php?name=<?=$data['name']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="bi bi-trash"></i> Hapus</a>

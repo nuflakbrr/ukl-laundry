@@ -64,9 +64,9 @@
                                     <label for="roles" class="peer h-10 w-full text-gray-600">Jabatan</label>
                                     <select name="roles" id="roles" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option  disabled selected>Pilih Jabatan</option>
-                                        <option value="admin">admin</option>
-                                        <option value="owner">owner</option>
-                                        <option value="cashier">cashier</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="owner">Owner</option>
+                                        <option value="cashier">Kasir</option>
                                     </select>
                                 </div>
                                 <div class="relative mt-5">

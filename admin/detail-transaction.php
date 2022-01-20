@@ -97,7 +97,7 @@
                                 <div class="relative mt-5">
                                     <label for="status" class="peer h-10 w-full text-gray-600">Status Pengerjaan</label>
                                     <?php 
-                                          $arr_status=array('new'=>'new','process'=>'process', 'done'=>'done', 'taken'=>'taken');
+                                          $arr_status=array('new'=>'Baru','process'=>'Proses', 'done'=>'Selesai', 'taken'=>'Diambil');
                                     ?>
                                     <select name="status" id="status" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Status Pengerjaan</option>
@@ -116,7 +116,7 @@
                                 <div class="relative mt-5">
                                     <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
                                     <?php 
-                                          $arr_payment=array('paid'=>'paid','not_paid'=>'not_paid');
+                                          $arr_payment=array('paid'=>'Lunas','not_paid'=>'Belum Lunas');
                                     ?>
                                     <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Status Pengerjaan</option>

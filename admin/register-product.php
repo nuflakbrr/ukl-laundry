@@ -52,10 +52,10 @@
                                         <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
                                         <select name="type" id="type" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                             <option  disabled selected>Pilih Jenis Tipe Jasa</option>
-                                            <option value="kiloan">kiloan</option>
-                                            <option value="selimut">selimut</option>
-                                            <option value="bed_cover">bed cover</option>
-                                            <option value="kaos">kaos</option>
+                                            <option value="kiloan">Kiloan</option>
+                                            <option value="selimut">Selimut</option>
+                                            <option value="bed_cover">Bed Cover</option>
+                                            <option value="kaos">Kaos</option>
                                         </select>
                                     </div>
                                     <div class="relative mt-5">

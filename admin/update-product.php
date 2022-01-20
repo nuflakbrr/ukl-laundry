@@ -56,7 +56,7 @@
                                     <div class="relative mt-5">
                                         <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
                                         <?php 
-                                          $arr_type=array('kiloan'=>'kiloan','selimut'=>'selimut', 'bed_cover'=>'bed_cover', 'kaos'=> 'kaos');
+                                          $arr_type=array('kiloan'=>'Kiloan','selimut'=>'Selimut', 'bed_cover'=>'Bed Cover', 'kaos'=> 'Kaos');
                                         ?>
                                         <select name="type" id="type" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                             <option disabled>Pilih Jenis Tipe Jasa</option>

@@ -64,7 +64,7 @@
                                     <div class="relative mt-5">
                                         <label for="gender" class="peer h-10 w-full text-gray-600">Gender</label>
                                         <?php 
-                                          $arr_gender=array('Male'=>'Male','Female'=>'Female');
+                                          $arr_gender=array('Male'=>'Laki-laki','Female'=>'Perempuan');
                                         ?>
                                         <select name="gender" id="gender" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                             <option disabled>Pilih Jenis Kelamin</option>
