@@ -56,7 +56,7 @@
                                     </div>
                                   </div>
                                 </form>
-                                <form action="../utils/process-transaction.php" method="post">
+                                <form action="../utils/cashier/process-transaction.php" method="post">
                                     <div class="relative mt-5">
                                         <label for="member" class="peer h-10 w-full text-gray-600">Pelanggan</label>
                                         <select name="member" id="member" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">

@@ -16,7 +16,7 @@
         session_start();
         $user = $_SESSION['id'];
 
-        include ("../sql/db-laundry.php");
+        include ("../../sql/db-laundry.php");
 
         if(empty($member) || empty($date) || empty($deadline) || empty($date_pay) || empty($status) || empty($payment)){
             echo "<script>alert('Harap semua data diisi dengan benar!');location.href='../admin/transaction.php?total_pckg=1';</script>";
