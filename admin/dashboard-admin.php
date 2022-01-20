@@ -140,7 +140,7 @@
                     <td class="px-4 py-3 text-sm"><?=$data['date'] ?></td>
                     <td class="px-4 py-3 text-sm"><?=$data['deadline'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <?php if($data['payment'] == '0'){ ?>
+                      <?php if($data['payment'] == 'not_pay'){ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Belum Lunas</span>
                       <?php }else{ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Lunas</span>
@@ -170,7 +170,7 @@
                     </td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
                       <a href="detail-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
-                      <a href="../utils/process-delete-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700"><i class="bi bi-trash"></i> Delete</a>
+                      <!-- <a href="../utils/process-delete-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700"><i class="bi bi-trash"></i> Delete</a> -->
                     </td>
                   </tr>
                   <?php 

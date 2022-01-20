@@ -32,7 +32,7 @@
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black">
-      <?php include ('../utils/layouts/dashboard-admin.php') ?>
+      <?php include ('../utils/layouts/dashboard-cashier.php') ?>
     
       <div class="h-full ml-14 mt-14 md:ml-64 print:-mt-24 print:mx-auto">
       <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
@@ -53,7 +53,7 @@
                                 $qry_get=mysqli_query($con,"select * from transaction where id = '".$_GET['id']."'");
                                 $dt_get=mysqli_fetch_array($qry_get);
                             ?>
-                            <form action="../utils/process-update-transaction.php" method="post">
+                            <form action="../utils/cashier/process-update-transaction.php" method="post">
                                 <div class="relative">
                                     <input autocomplete="off" readonly id="member" name="member" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Nama" value="<?php
                                       // show data name member from transaction.id_member

@@ -32,7 +32,7 @@
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black">
-      <?php include ('../utils/layouts/dashboard-admin.php') ?>
+      <?php include ('../utils/layouts/dashboard-owner.php') ?>
     
       <div class="h-full ml-14 mt-14 md:ml-64 print:-mt-24 print:mx-auto">
       <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
@@ -43,7 +43,7 @@
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
                     <div>
-                        <h1 class="text-2xl font-semibold text-center print:hidden">Silakan Ubah Data Transaksi!</h1>
+                        <h1 class="text-2xl font-semibold text-center print:hidden">Detail Transaksi</h1>
                         <h1 class="text-2xl font-semibold hidden print:block print:text-center">Laporan Transaksi!</h1>
                     </div>
                     <div class="divide-y divide-gray-200">
@@ -53,7 +53,7 @@
                                 $qry_get=mysqli_query($con,"select * from transaction where id = '".$_GET['id']."'");
                                 $dt_get=mysqli_fetch_array($qry_get);
                             ?>
-                            <form action="../utils/process-update-transaction.php" method="post">
+                            <form action="#" method="#">
                                 <div class="relative">
                                     <input autocomplete="off" readonly id="member" name="member" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Nama" value="<?php
                                       // show data name member from transaction.id_member
@@ -77,75 +77,61 @@
                                 </div>
                                 <div class="relative mt-5">
                                     <label for="status" class="peer h-10 w-full text-gray-600">Status Pengerjaan</label>
-                                    <?php 
-                                          $arr_status=array('new'=>'new','process'=>'process', 'done'=>'done', 'taken'=>'taken');
-                                    ?>
-                                    <select name="status" id="status" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                        <option disabled>Pilih Status Pengerjaan</option>
-                                        
-                                        <?php foreach ($arr_status as $key_status => $val_status):
-                                              if($key_status==$dt_get['status']){
-                                                  $selek="selected";
-                                              } else {
-                                                  $selek="";
-                                              }
-                                            ?>
-                                          <option value="<?=$key_status?>" <?=$selek?>><?=$val_status?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                    <input type="text" readonly class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
+                                      // show data status payment
+                                      $qry_payment = mysqli_query($con,"select * from transaction where id='$dt_get[id]'");
+                                      $data_payment = mysqli_fetch_array($qry_payment);
+
+                                      if($data_payment['status']=='new'){
+                                        echo "Baru";
+                                      } else if($data_payment['status']=='process'){
+                                        echo "Sedang Diproses";
+                                      } else if($data_payment['status']=='done'){
+                                        echo "Selesai";
+                                      } else if($data_payment['status']=='taken'){
+                                        echo "Sudah Diambil";
+                                      }
+                                    ?>" />
                                 </div>
                                 <div class="relative mt-5">
                                     <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
-                                    <?php 
-                                          $arr_payment=array('pay'=>'pay','not_pay'=>'not_pay');
-                                    ?>
-                                    <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                        <option disabled>Pilih Status Pengerjaan</option>
-                                        <?php foreach ($arr_payment as $key_payment => $val_payment):
-                                              if($key_payment==$dt_get['payment']){
-                                                  $selek="selected";
-                                              } else {
-                                                  $selek="";
-                                              }
-                                            ?>
-                                          <option value="<?=$key_payment?>" <?=$selek?>><?=$val_payment?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                    <input type="text" readonly class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
+                                      // show data status payment
+                                      $qry_payment = mysqli_query($con,"select * from transaction where id='$dt_get[id]'");
+                                      $data_payment = mysqli_fetch_array($qry_payment);
+
+                                      if($data_payment['payment']=='pay'){
+                                        echo "Lunas";
+                                      } else {
+                                        echo "Belum Lunas";
+                                      }     
+                                    ?>" />
                                 </div>
                                 <div class="relative mt-5">
                                     <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
-                                    <select name="id_package[]" id="id_package[]" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                      <option disabled>Pilih Jenis Tipe Jasa</option>
-                                      <?php
-                                        include "../sql/db-laundry.php";
-                                        $qry_packg=mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");
-                                        while ($dt_packg=mysqli_fetch_array($qry_packg)) {
-                                          $qry_pack=mysqli_query($con,"select * from package where id='$dt_packg[id_package]'");
-                                          $data_pack=mysqli_fetch_array($qry_pack);
-                                          echo "<option value='$data_pack[id]'selected>$data_pack[type]</option>";
-                                        }
-                                        // $qry_pack=mysqli_query($con,"select * from package");
-                                        // while ($data_pack=mysqli_fetch_array($qry_pack)) {
-                                        //   echo "<option value='$data_pack[id]'>$data_pack[type]</option>";
-                                        // }
-                                      ?>
-                                    </select>
+                                    <input type="text" readonly class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
+                                      // show data type name from detail_transaction.id_package
+                                      include('../sql/db-laundry.php');
+                                      $qry_get_type = mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");
+                                      $dt_get_type = mysqli_fetch_array($qry_get_type);
+
+                                      $qry_type = mysqli_query($con,"select * from package where id='$dt_get_type[id_package]'");
+                                      $data_type = mysqli_fetch_array($qry_type);
+                                      echo $data_type['type'];
+                                    ?>" />
                                 </div>
                                 <div class="relative mt-5">
                                   <label for="qty" class="peer h-10 w-full text-gray-600">Kuantitas</label>
                                   <div class="flex">
-                                    <input type="text" readonly name="qty[]" id="qty[]" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
+                                    <input type="text" readonly class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
                                       // show data qty
                                       $qry_packg=mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");
-                                      while ($dt_packg=mysqli_fetch_array($qry_packg)) {
+                                      while ($dt_packg = mysqli_fetch_array($qry_packg)) {
                                         echo $dt_packg['qty'];
                                       }
                                     ?>" />
                                     <span>Kg</span>
                                   </div>
-                                </div>
-                                <div class="relative mt-5 print:hidden">
-                                    <button type="submit" class="w-full bg-blue-600 text-white text-md rounded-md px-2 py-1 hover:bg-blue-700">Ubah Data Transaksi</button>
                                 </div>
                             </form>
                             <div class="hidden print:block">

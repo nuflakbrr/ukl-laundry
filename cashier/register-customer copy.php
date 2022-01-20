@@ -32,7 +32,7 @@
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black">
-      <?php include ('../utils/layouts/dashboard-admin.php') ?>
+      <?php include ('../utils/layouts/dashboard-cashier.php') ?>
     
       <div class="h-full ml-14 mt-14 md:ml-64">
         <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
@@ -43,48 +43,33 @@
                 <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div class="max-w-md mx-auto">
                         <div>
-                            <h1 class="text-2xl font-semibold">Ubah Data Pelanggan!</h1>
+                            <h1 class="text-2xl font-semibold">Silakan Masukkan Data Pelanggan!</h1>
                         </div>
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                                <?php
-                                    include ('../sql/db-laundry.php');
-                                    $qry_get=mysqli_query($con,"select * from member where name = '".$_GET['name']."'");
-                                    $dt_get=mysqli_fetch_array($qry_get);
-                                ?>
-                                <form action="../utils/process-update-customer.php" method="post">
+                                <form action="../utils/process-register-customer.php" method="post">
                                     <div class="relative mt-5">
-                                        <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" value="<?=$dt_get['name'] ?>" />
+                                        <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" />
                                         <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
                                     </div>
                                     <div class="relative mt-5">
-                                        <input autocomplete="off" id="address" name="address" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Address" value="<?=$dt_get['address'] ?>" />
+                                        <input autocomplete="off" id="address" name="address" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Address" />
                                         <label for="address" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Address</label>
                                     </div>
                                     <div class="relative mt-5">
                                         <label for="gender" class="peer h-10 w-full text-gray-600">Gender</label>
-                                        <?php 
-                                          $arr_gender=array('Male'=>'Male','Female'=>'Female');
-                                        ?>
                                         <select name="gender" id="gender" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                            <option disabled>Pilih Jenis Kelamin</option>
-                                            <?php foreach ($arr_gender as $key_gender => $val_gender):
-                                              if($key_gender==$dt_get['gender']){
-                                                  $selek="selected";
-                                              } else {
-                                                  $selek="";
-                                              }
-                                            ?>
-                                            <option value="<?=$key_gender?>" <?=$selek?>><?=$val_gender?></option>
-                                            <?php endforeach ?>
+                                            <option  disabled selected>Pilih Jenis Kelamin</option>
+                                            <option value="male">male</option>
+                                            <option value="female">female</option>
                                         </select>
                                     </div>
                                     <div class="relative mt-5">
-                                        <input autocomplete="off" id="phone" name="phone" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Phone Number" value="<?=$dt_get['phone'] ?>" />
+                                        <input autocomplete="off" id="phone" name="phone" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Phone Number" />
                                         <label for="phone" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Phone Number</label>
                                     </div>
                                     <div class="relative mt-5">
-                                        <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Ubah Data Pelanggan</button>
+                                        <button type="submit" class="w-full bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-700">Daftar Pelanggan</button>
                                     </div>
                                 </form>
                             </div>

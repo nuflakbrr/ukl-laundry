@@ -32,7 +32,7 @@
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black">
-      <?php include ('../utils/layouts/dashboard-admin.php') ?>
+      <?php include ('../utils/layouts/dashboard-cashier.php') ?>
     
       <div class="h-full ml-14 mt-14 md:ml-64">
         <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
@@ -52,7 +52,7 @@
                                     $qry_get=mysqli_query($con,"select * from member where name = '".$_GET['name']."'");
                                     $dt_get=mysqli_fetch_array($qry_get);
                                 ?>
-                                <form action="../utils/process-update-customer.php" method="post">
+                                <form action="../utils/cashier/process-update-customer.php" method="post">
                                     <div class="relative mt-5">
                                         <input autocomplete="off" id="name" name="name" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="Name" value="<?=$dt_get['name'] ?>" />
                                         <label for="name" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
