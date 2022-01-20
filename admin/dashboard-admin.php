@@ -134,14 +134,14 @@
                     <td class="px-4 py-3 text-sm"><?=$data['date'] ?></td>
                     <td class="px-4 py-3 text-sm"><?=$data['deadline'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <?php if($data['payment'] == 'not_paid'){ ?>
+                      <?php if ($data['payment'] == 'not_paid'){ ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Belum Lunas</span>
-                      <?php }else{ ?>
+                      <?php } else { ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Lunas</span>
                       <?php } ?>
                     </td>
                     <td class="px-4 py-3 text-xs">
-                      <?php if($data['status'] == 'new' ) { ?>
+                      <?php if ($data['status'] == 'new' ) { ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Baru</span>
                       <?php } else if($data['status'] == 'process') { ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-yellow-700 rounded-full">Proses</span>
@@ -149,9 +149,26 @@
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-blue-700 rounded-full">Selesai</span>
                       <?php } else if($data['status'] == 'taken') { ?>
                         <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Sudah Diambil</span>
-                      <?php } ?>
+                      <?php } else {
+                                echo "Status Pengerjaan Tidak Diketahui";
+                            }
+                      ?>
                     </td>
-                    <td><?=$data['package'] ?></td>
+                    <td>
+                      <?php
+                        if ($data['package'] == 'kiloan') {
+                          echo "Kiloan";
+                        } else if ($data['package'] == 'selimut') {
+                          echo "Selimut";
+                        } else if ($data['package'] == 'bed_cover') {
+                          echo "Bed Cover";
+                        } else if ($data['package'] == 'Kaos') {
+                          echo "kaos";
+                        } else {
+                          echo "Tipe Jasa Produk Tidak Diketahui";
+                        }
+                      ?>
+                    </td>
                     <td class="px-4 py-3 text-sm">
                       Rp.
                       <?php

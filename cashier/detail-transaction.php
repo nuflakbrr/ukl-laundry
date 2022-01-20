@@ -83,54 +83,80 @@
                                     <label for="member" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Nama Pelanggan</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" readonly id="date" name="date" type="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date" value="<?=$dt_get['date'] ?>" />
+                                    <input autocomplete="off" readonly id="date" name="date" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date" value="<?=$dt_get['date'] ?>" />
                                     <label for="date" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Tanggal Pemesanan</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" readonly id="deadline" name="deadline" type="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="deadline" value="<?=$dt_get['deadline'] ?>" />
+                                    <input autocomplete="off" readonly id="deadline" name="deadline" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="deadline" value="<?=$dt_get['deadline'] ?>" />
                                     <label for="deadline" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Tanggal Selesai</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" readonly id="date_pay" name="date_pay" type="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date_pay" value="<?=$dt_get['date_pay'] ?>" />
+                                    <input autocomplete="off" readonly id="date_pay" name="date_pay" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date_pay" value="<?=$dt_get['date_pay'] ?>" />
                                     <label for="date_pay" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Tanggal Bayar</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <label for="status" class="peer h-10 w-full text-gray-600">Status Pengerjaan</label>
-                                    <?php 
-                                          $arr_status=array('new'=>'Baru','process'=>'Proses', 'done'=>'Selesai', 'taken'=>'Diambil');
-                                    ?>
-                                    <select name="status" id="status" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                        <option disabled>Pilih Status Pengerjaan</option>
-                                        
-                                        <?php foreach ($arr_status as $key_status => $val_status):
-                                              if($key_status==$dt_get['status']){
-                                                  $selek="selected";
-                                              } else {
-                                                  $selek="";
-                                              }
-                                            ?>
-                                          <option value="<?=$key_status?>" <?=$selek?>><?=$val_status?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                                <div class="relative mt-5">
-                                    <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
-                                    <?php 
+                                  <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
+                                  <input type="text" readonly class="hidden peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default print:block" placeholder="Kuantitas" value="<?php
+                                      // show data status payment
+                                      $qry_payment = mysqli_query($con,"select * from transaction where id='$dt_get[id]'");
+                                      $data_payment = mysqli_fetch_array($qry_payment);
+
+                                      if($data_payment['payment']=='paid'){
+                                        echo "Lunas";
+                                      } else {
+                                        echo "Belum Lunas";
+                                      }     
+                                    ?>" />
+                                  <?php 
                                           $arr_payment=array('paid'=>'Lunas','not_paid'=>'Belum Lunas');
-                                    ?>
-                                    <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                        <option disabled>Pilih Status Pengerjaan</option>
-                                        <?php foreach ($arr_payment as $key_payment => $val_payment):
+                                          ?>
+                                    <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none print:hidden">
+                                      <option disabled>Pilih Status Pengerjaan</option>
+                                      <?php foreach ($arr_payment as $key_payment => $val_payment):
                                               if($key_payment==$dt_get['payment']){
-                                                  $selek="selected";
+                                                $selek="selected";
                                               } else {
-                                                  $selek="";
+                                                $selek="";
                                               }
-                                            ?>
+                                              ?>
                                           <option value="<?=$key_payment?>" <?=$selek?>><?=$val_payment?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
+                                          <?php endforeach ?>
+                                        </select>
+                                      </div>
+                                      <div class="relative mt-5">
+                                          <label for="status" class="peer h-10 w-full text-gray-600">Status Pengerjaan</label>
+                                          <input type="text" readonly class="hidden peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default print:block" placeholder="Kuantitas" value="<?php
+                                        // show data status
+                                        $qry_payment = mysqli_query($con,"select * from transaction where id='$dt_get[id]'");
+                                        $data_payment = mysqli_fetch_array($qry_payment);
+      
+                                        if($data_payment['status']=='new'){
+                                          echo "Baru";
+                                        } else if($data_payment['status']=='process'){
+                                          echo "Sedang Diproses";
+                                        } else if($data_payment['status']=='done'){
+                                          echo "Selesai";
+                                        } else if($data_payment['status']=='taken'){
+                                          echo "Sudah Diambil";
+                                        }
+                                      ?>" />
+                                          <?php 
+                                                $arr_status=array('new'=>'Baru','process'=>'Proses', 'done'=>'Selesai', 'taken'=>'Diambil');
+                                          ?>
+                                          <select name="status" id="status" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none print:hidden">
+                                              <option disabled>Pilih Status Pengerjaan</option>
+                                              
+                                              <?php foreach ($arr_status as $key_status => $val_status):
+                                                    if($key_status==$dt_get['status']){
+                                                        $selek="selected";
+                                                    } else {
+                                                        $selek="";
+                                                    }
+                                                  ?>
+                                                <option value="<?=$key_status?>" <?=$selek?>><?=$val_status?></option>
+                                              <?php endforeach ?>
+                                          </select>
+                                      </div>
                                 <?php
                                   // update data for multi transaction
                                   $qry_packg=mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");

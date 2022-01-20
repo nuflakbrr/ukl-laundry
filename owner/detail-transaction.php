@@ -83,21 +83,21 @@
                                     <label for="member" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Nama Pelanggan</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" readonly id="date" name="date" type="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date" value="<?=$dt_get['date'] ?>" />
+                                    <input autocomplete="off" readonly id="date" name="date" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date" value="<?=$dt_get['date'] ?>" />
                                     <label for="date" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Tanggal Pemesanan</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" readonly id="deadline" name="deadline" type="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="deadline" value="<?=$dt_get['deadline'] ?>" />
+                                    <input autocomplete="off" readonly id="deadline" name="deadline" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="deadline" value="<?=$dt_get['deadline'] ?>" />
                                     <label for="deadline" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Tanggal Selesai</label>
                                 </div>
                                 <div class="relative mt-5">
-                                    <input autocomplete="off" readonly id="date_pay" name="date_pay" type="date" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date_pay" value="<?=$dt_get['date_pay'] ?>" />
+                                    <input autocomplete="off" readonly id="date_pay" name="date_pay" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" placeholder="date_pay" value="<?=$dt_get['date_pay'] ?>" />
                                     <label for="date_pay" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Tanggal Bayar</label>
                                 </div>
                                 <div class="relative mt-5">
                                     <label for="status" class="peer h-10 w-full text-gray-600">Status Pengerjaan</label>
                                     <input type="text" readonly class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
-                                      // show data status payment
+                                      // show data status
                                       $qry_payment = mysqli_query($con,"select * from transaction where id='$dt_get[id]'");
                                       $data_payment = mysqli_fetch_array($qry_payment);
 
@@ -119,7 +119,7 @@
                                       $qry_payment = mysqli_query($con,"select * from transaction where id='$dt_get[id]'");
                                       $data_payment = mysqli_fetch_array($qry_payment);
 
-                                      if($data_payment['payment']=='pay'){
+                                      if($data_payment['payment']=='paid'){
                                         echo "Lunas";
                                       } else {
                                         echo "Belum Lunas";
@@ -164,7 +164,8 @@
                                 <h1>)</h1>
                               </div>
                             </div>
-                            <div class="relative mt-5 print:hidden">
+                            <div class="relative flex mt-5 print:hidden">
+                              <button class="w-24 px-4 py-2 mr-2 text-md rounded-md text-white bg-yellow-500 hover:bg-yellow-600" onclick="const refreshBtn = document.getElementById('refresh'); window.location.reload(true);" id="refresh"><i class="bi bi-arrow-clockwise"></i></button>
                               <button class="w-full px-4 py-2 text-md rounded-md text-white bg-green-600 hover:bg-green-700" onclick="const printBtn = document.getElementById('print'); window.print();" id="print"><i class="bi bi-download"></i> Report</button>
                             </div>
                         </div>
