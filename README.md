@@ -8,7 +8,7 @@ Create a UKL Laundry Study Case with PHP Native.
 
 - [x] Desain Responsive
 - [x] Kondisional Login untuk Jabatan (Admin, Owner, Cashier)
-- [ ] Decrypt md5 Password
+- [x] Update md5 Password
 
 **Admin Side**
 
@@ -18,22 +18,24 @@ Create a UKL Laundry Study Case with PHP Native.
 - [x] CRUD Outlet 
 - [x] CRUD Tipe Jasa 
 - [x] Registrasi Pelanggan 
-- [ ] Transaksi
-- [ ] Generate Laporan
+- [x] Transaksi
+- [ ] Multi Transaksi
+- [x] Generate Laporan
 
 **Owner Side**
 
 - [x] Login 
 - [x] Logout
-- [ ] Generate Laporan
+- [x] Generate Laporan
 
 **Cashier Side**
 
 - [x] Login 
 - [x] Logout
 - [x] Registrasi Pelanggan
-- [ ] Transaksi
-- [ ] Generate Laporan
+- [x] Transaksi
+- [ ] Multi Transaksi
+- [x] Generate Laporan
 
 ## Authors
 
