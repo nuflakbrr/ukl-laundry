@@ -43,7 +43,7 @@
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
             </div>
             <div class="text-right">
-            <?php include ('../sql/db-laundry.php');
+              <?php include ('../sql/db-laundry.php');
                     $qry_outl = mysqli_query($con,"select * from outlet");
                     $i = mysqli_num_rows($qry_outl);
               ?>
@@ -69,7 +69,7 @@
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
             </div>
             <div class="text-right">
-            <?php include ('../sql/db-laundry.php');
+              <?php include ('../sql/db-laundry.php');
                     $qry_trnsct = mysqli_query($con,"select * from transaction");
                     $i = mysqli_num_rows($qry_trnsct);
               ?>
@@ -82,7 +82,7 @@
               <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
             </div>
             <div class="text-right">
-            <?php include ('../sql/db-laundry.php');
+              <?php include ('../sql/db-laundry.php');
                     $qry_user = mysqli_query($con,"select * from user");
                     $i = mysqli_num_rows($qry_user);
               ?>
@@ -104,8 +104,8 @@
                     <th class="px-4 py-3">Member</th>
                     <th class="px-4 py-3">Tanggal Pemesanan</th>
                     <th class="px-4 py-3">Tanggal Selesai</th>
-                    <th class="px-4 py-3">Status</th>
                     <th class="px-4 py-3">Pembayaran</th>
+                    <th class="px-4 py-3">Status</th>
                     <th class="px-4 py-3">Total Harga</th>
                     <th class="px-4 py-3">Aksi</th>
                   </tr>
@@ -126,20 +126,50 @@
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold"><?=$data['id_member'] ?></p>
+                          <p class="font-semibold">
+                            <?php
+                              // show data name member from transaction.id_member
+                              $qry_member = mysqli_query($con,"select * from member where id='$data[id_member]'");
+                              $data_member = mysqli_fetch_array($qry_member);
+                              echo $data_member['name'];
+                            ?>
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['date'] ?></td>
                     <td class="px-4 py-3 text-sm"><?=$data['deadline'] ?></td>
-                    <td class="px-4 py-3 text-sm"><?=$data['status'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <span class="px-2 py-1 font-semibold leading-tight text-white bg-blue-700 rounded-full"><?=$data['payment'] ?></span>
+                      <?php if($data['payment'] == '0'){ ?>
+                        <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Belum Lunas</span>
+                      <?php }else{ ?>
+                        <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Lunas</span>
+                      <?php } ?>
                     </td>
-                    <td class="px-4 py-3 text-sm"></td>
+                    <td class="px-4 py-3 text-xs">
+                      <?php if($data['status'] == 'new' ) { ?>
+                        <span class="px-2 py-1 font-semibold leading-tight text-white bg-red-700 rounded-full">Baru</span>
+                      <?php } else if($data['status'] == 'process') { ?>
+                        <span class="px-2 py-1 font-semibold leading-tight text-white bg-yellow-700 rounded-full">Proses</span>
+                      <?php } else if($data['status'] == 'done') { ?>
+                        <span class="px-2 py-1 font-semibold leading-tight text-white bg-blue-700 rounded-full">Selesai</span>
+                      <?php } else if($data['status'] == 'taken') { ?>
+                        <span class="px-2 py-1 font-semibold leading-tight text-white bg-green-700 rounded-full">Sudah Diambil</span>
+                      <?php } ?>
+                    </td>
+                    <td class="px-4 py-3 text-sm">
+                      Rp.
+                      <?php
+                        // show data total price from table detail_transaction.qty * table package.price
+                        $qry_total = mysqli_query($con,"SELECT qty, price, price * qty AS total FROM transaction t, detail_transaction d_t, package p WHERE d_t.id_transaction = '".$data['id']."' AND d_t.id_package = p.id");
+                        echo mysqli_error($con);
+                        $data_total = mysqli_fetch_array($qry_total);
+                        $total = $data_total['total'];
+                        echo $total;
+                      ?>
+                    </td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
                       <a href="detail-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
-                      <button class="px-4 py-2 text-xs rounded-full text-white bg-green-600 hover:bg-green-700" onclick="const printBtn = document.getElementById('print'); window.print();" id="print"><i class="bi bi-download"></i> Report</button>
                       <a href="../utils/process-delete-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700"><i class="bi bi-trash"></i> Delete</a>
                     </td>
                   </tr>
@@ -150,7 +180,6 @@
               </table>
             </div>
             <div class="grid px-4 py-3 font-semibold uppercase border-t border-gray-700 sm:grid-cols-4 bg-gray-800">
-              <!-- <a href="register-employee.php" class="flex mx-auto col-end-6 text-white bg-green-700 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-sm">Tambah Karyawan</a> -->
             </div>
           </div>
         </div>

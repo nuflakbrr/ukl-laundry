@@ -72,8 +72,11 @@
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['address'] ?></td>
                     <td class="px-4 py-3 text-xs">
-                      <!-- <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> Approved </span> -->
-                      <?=$data['gender'] ?>
+                      <?php if($data['gender'] == 'Male'){ ?>
+                        <span class="px-2 py-1 font-semibold leading-tight">Laki-laki</span>
+                      <?php }else{ ?>
+                        <span class="px-2 py-1 font-semibold leading-tight">Perempuan</span>
+                      <?php } ?>
                     </td>
                     <td class="px-4 py-3 text-sm"><?=$data['phone'] ?></td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
