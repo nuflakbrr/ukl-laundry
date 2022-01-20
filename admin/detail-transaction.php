@@ -61,7 +61,7 @@
                               echo $dt_get_user['role'];
                             ?>)
                           </p>
-                          <p class="hidden print:flex justify-end items-end mt-2 ml-16 text-sm" id="time"></p>
+                          <p class="hidden print:flex justify-end items-end mt-2 ml-24 text-sm" id="time"></p>
                         </div>
                         <hr class="hidden print:block mt-2 border-2 border-black"/>
                     </div>
@@ -189,7 +189,7 @@
   <script>
     var today = new Date();
     var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var time = today.getHours() + ":" + today.getMinutes();
     var dateTime = date +', '+ time;
     document.getElementById("time").innerHTML = dateTime;
 
