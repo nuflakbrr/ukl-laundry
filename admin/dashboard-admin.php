@@ -114,7 +114,7 @@
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
                     include ('../sql/db-laundry.php');
-                    $qry_transaction = mysqli_query($con,"SELECT t.id, m.name as name_member, t.date, t.deadline, t.date_pay, t.status, t.payment, u.name as name_employee, p.type as package, p.price * d_t.qty as total FROM transaction t, detail_transaction d_t, package p, member m, user u WHERE t.id_member = m.id AND t.id_user = u.id AND t.id = d_t.id_transaction AND p.id = d_t.id_package");
+                    $qry_transaction = mysqli_query($con,"SELECT t.id as t_id, m.name as name_member, t.date, t.deadline, t.date_pay, t.status, t.payment, u.name as name_employee, p.type as package, p.price * d_t.qty as total FROM transaction t, detail_transaction d_t, package p, member m, user u WHERE t.id_member = m.id AND t.id_user = u.id AND t.id = d_t.id_transaction AND p.id = d_t.id_package");
                     $no=0;
                     while($data = mysqli_fetch_array($qry_transaction)){
                     $no++;
@@ -159,7 +159,7 @@
                       ?>
                     </td>
                     <td class="px-4 py-3 text-sm flex sm:flex-row flex-col">
-                      <a href="detail-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
+                      <a href="detail-transaction.php?id=<?=$data['t_id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-blue-600 hover:bg-blue-700"><i class="bi bi-info-circle"></i> Detail</a>
                       <!-- <a href="../utils/process-delete-transaction.php?id=<?=$data['id']?>" class="px-4 py-2 text-xs rounded-full text-white bg-red-600 hover:bg-red-700"><i class="bi bi-trash"></i> Delete</a> -->
                     </td>
                   </tr>

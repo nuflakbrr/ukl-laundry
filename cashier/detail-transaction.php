@@ -40,11 +40,30 @@
             <div
                 class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl print:hidden">
             </div>
-            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 print:shadow-none">
                 <div class="max-w-md mx-auto">
                     <div>
                         <h1 class="text-2xl font-semibold text-center print:hidden">Silakan Ubah Data Transaksi!</h1>
-                        <h1 class="text-2xl font-semibold hidden print:block print:text-center">Laporan Transaksi!</h1>
+                        <h1 class="text-2xl font-semibold hidden print:block print:text-center">Laporan Transaksi</h1>
+                        <div class="flex">
+                          <p class="hidden print:block mt-2 text-sm">
+                            Dilayani oleh, <?php
+                              // get user name from transaction
+                              include('../sql/db-laundry.php');
+                              $qry_get=mysqli_query($con,"select * from transaction where id = '".$_GET['id']."'");
+                              $dt_get=mysqli_fetch_array($qry_get);
+
+                              $qry_get_user=mysqli_query($con,"select * from user where id = '".$dt_get['id_user']."'");
+                              $dt_get_user=mysqli_fetch_array($qry_get_user);
+                              echo $dt_get_user['name'];
+                              ?>
+                              (<?php
+                                echo $dt_get_user['role'];
+                              ?>)
+                          </p>
+                          <p class="hidden print:flex justify-end items-end mt-2 ml-16 text-sm" id="time"></p>
+                        </div>
+                        <hr class="hidden print:block mt-2 border-2 border-black"/>
                     </div>
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -53,7 +72,7 @@
                                 $qry_get=mysqli_query($con,"select * from transaction where id = '".$_GET['id']."'");
                                 $dt_get=mysqli_fetch_array($qry_get);
                             ?>
-                            <form action="../utils/cashier/process-update-transaction.php" method="post">
+                            <form action="../utils/process-update-transaction.php" method="post">
                                 <div class="relative">
                                     <input autocomplete="off" readonly id="member" name="member" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Nama" value="<?php
                                       // show data name member from transaction.id_member
@@ -97,7 +116,7 @@
                                 <div class="relative mt-5">
                                     <label for="payment" class="peer h-10 w-full text-gray-600">Status Pembayaran</label>
                                     <?php 
-                                          $arr_payment=array('pay'=>'pay','not_pay'=>'not_pay');
+                                          $arr_payment=array('paid'=>'paid','not_paid'=>'not_paid');
                                     ?>
                                     <select name="payment" id="payment" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
                                         <option disabled>Pilih Status Pengerjaan</option>
@@ -112,47 +131,42 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <div class="relative mt-5">
-                                    <label for="type" class="peer h-10 w-full text-gray-600">Tipe Jasa</label>
-                                    <select name="id_package[]" id="id_package[]" class="peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none">
-                                      <option disabled>Pilih Jenis Tipe Jasa</option>
-                                      <?php
-                                        include "../sql/db-laundry.php";
-                                        $qry_packg=mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");
-                                        while ($dt_packg=mysqli_fetch_array($qry_packg)) {
-                                          $qry_pack=mysqli_query($con,"select * from package where id='$dt_packg[id_package]'");
-                                          $data_pack=mysqli_fetch_array($qry_pack);
-                                          echo "<option value='$data_pack[id]'selected>$data_pack[type]</option>";
-                                        }
-                                        // $qry_pack=mysqli_query($con,"select * from package");
-                                        // while ($data_pack=mysqli_fetch_array($qry_pack)) {
-                                        //   echo "<option value='$data_pack[id]'>$data_pack[type]</option>";
-                                        // }
-                                      ?>
-                                    </select>
-                                </div>
-                                <div class="relative mt-5">
-                                  <label for="qty" class="peer h-10 w-full text-gray-600">Kuantitas</label>
-                                  <div class="flex">
-                                    <input type="text" readonly name="qty[]" id="qty[]" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default" placeholder="Kuantitas" value="<?php
-                                      // show data qty
-                                      $qry_packg=mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");
-                                      while ($dt_packg=mysqli_fetch_array($qry_packg)) {
-                                        echo $dt_packg['qty'];
-                                      }
-                                    ?>" />
-                                    <span>Kg</span>
-                                  </div>
-                                </div>
+                                <?php
+                                  // update data for multi transaction
+                                  $qry_packg=mysqli_query($con,"select * from detail_transaction where id_transaction='$dt_get[id]'");
+                                  while ($dt_packg=mysqli_fetch_array($qry_packg)) {
+                                    $qry_pack=mysqli_query($con,"select * from package where id='$dt_packg[id_package]'");
+                                    $data_pack=mysqli_fetch_array($qry_pack);
+                                    echo "<div class='relative mt-5'>
+                                          <label for='type' class='peer h-10 w-full text-gray-600'>Tipe Jasa</label>
+                                          <select name='id_package[]' id='id_package[]' class='peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none'>
+                                            <option disabled>Pilih Jenis Tipe Jasa</option>";
+                                            $qry_pack=mysqli_query($con,"select * from package");
+                                            while ($data_pack=mysqli_fetch_array($qry_pack)) {
+                                              if($data_pack['id']==$dt_packg['id_package']){
+                                                echo "<option value='$data_pack[id]'selected>$data_pack[type]</option>";
+                                              }
+                                            }
+                                            echo "</select>
+                                        </div>
+                                        <div class='relative mt-5'>
+                                          <label for='qty' class='peer h-10 w-full text-gray-600'>Kuantitas</label>
+                                          <div class='flex'>
+                                            <input type='text' readonly name='qty[]' id='qty[]' class='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none cursor-default' placeholder='Kuantitas' value='$dt_packg[qty]' />
+                                            <span>Kg</span>
+                                          </div>
+                                        </div>";
+                                  }
+                                ?>
                                 <div class="relative mt-5 print:hidden">
                                     <button type="submit" class="w-full bg-blue-600 text-white text-md rounded-md px-2 py-1 hover:bg-blue-700">Ubah Data Transaksi</button>
                                 </div>
                             </form>
                             <div class="hidden print:block">
-                              <div class="relative mt-5 flex justify-end items-end">
+                              <div class="relative mt-10 flex justify-end items-end">
                                 <h1 class="mx-5">Hormat Kami</h1>
                               </div>
-                              <div class="relative mt-8 flex justify-end items-end">
+                              <div class="relative mt-10 flex justify-end items-end">
                                 <h1>(</h1>
                                 <span class="mx-5">UKL Laundry</span>
                                 <h1>)</h1>
@@ -173,6 +187,12 @@
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   <script>
+    var today = new Date();
+    var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date +', '+ time;
+    document.getElementById("time").innerHTML = dateTime;
+
     const setup = () => {
       const getTheme = () => {
         if (window.localStorage.getItem('dark')) {
