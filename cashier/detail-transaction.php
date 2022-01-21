@@ -34,7 +34,7 @@
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black">
       <?php include ('../utils/layouts/dashboard-cashier.php') ?>
     
-      <div class="h-full ml-14 mt-14 md:ml-64 print:-mt-24 print:mx-auto">
+      <div class="h-full ml-14 mt-14 md:ml-64 print:-mt-16 print:mx-auto">
       <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div

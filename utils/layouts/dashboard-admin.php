@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if($_SESSION['status_login']!=true) {
+    if($_SESSION['status_login']!=true || $_SESSION['role']!='admin') {
         header('location: ../login.php');
     }
 ?>
