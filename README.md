@@ -2,6 +2,13 @@
 
 Create a UKL Laundry Study Case with PHP Native.
 
+## Resource
+
+Here are the resources that I use in this project:
+
+- [TailwindCSS](https://tailwindcss.com)
+- [Bootstrap Icons](https://icons.getbootstrap.com)
+
 ## Todo List
 
 **Main**
