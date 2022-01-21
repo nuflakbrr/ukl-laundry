@@ -21,14 +21,14 @@ Create a UKL Laundry Study Case with PHP Native.
 - [x] Transaksi
 - [x] Multi Transaksi
 - [x] Generate Laporan
-- [ ] Total Harga
+- [x] Total Harga
 
 **Owner Side**
 
 - [x] Login 
 - [x] Logout
 - [x] Generate Laporan
-- [ ] Total Harga
+- [x] Total Harga
 
 **Cashier Side**
 
@@ -38,7 +38,7 @@ Create a UKL Laundry Study Case with PHP Native.
 - [x] Transaksi
 - [x] Multi Transaksi
 - [x] Generate Laporan
-- [ ] Total Harga
+- [x] Total Harga
 
 ## Authors
 
