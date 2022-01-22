@@ -13,39 +13,39 @@ Here are the resources that I use in this project:
 
 **Main**
 
-- [x] Desain Responsive
-- [x] Kondisional Login untuk Jabatan (Admin, Owner, Cashier)
+- [x] Responsive Design
+- [x] Conditional Login for Level Role (Admin, Owner, Cashier)
 - [x] Update md5 Password
 
 **Admin Side**
 
 - [x] Login 
 - [x] Logout
-- [x] CRUD Karyawan 
+- [x] CRUD Employee 
 - [x] CRUD Outlet 
-- [x] CRUD Tipe Jasa 
-- [x] Registrasi Pelanggan 
-- [x] Transaksi
-- [x] Multi Transaksi
-- [x] Generate Laporan
-- [x] Total Harga
+- [x] CRUD Package Type 
+- [x] Register Customer 
+- [x] Transaction
+- [x] Multi Transaction
+- [x] Generate Report
+- [x] Price Total
 
 **Owner Side**
 
 - [x] Login 
 - [x] Logout
-- [x] Generate Laporan
-- [x] Total Harga
+- [x] Generate Report
+- [x] Price Total
 
 **Cashier Side**
 
 - [x] Login 
 - [x] Logout
-- [x] Registrasi Pelanggan
-- [x] Transaksi
-- [x] Multi Transaksi
-- [x] Generate Laporan
-- [x] Total Harga
+- [x] Register Customer
+- [x] Transaction
+- [x] Multi Transaction
+- [x] Generate Report
+- [x] Price Total
 
 ## Authors
 
