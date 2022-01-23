@@ -162,7 +162,7 @@
                           echo "Selimut";
                         } else if ($data['package'] == 'bed_cover') {
                           echo "Bed Cover";
-                        } else if ($data['package'] == 'Kaos') {
+                        } else if ($data['package'] == 'kaos') {
                           echo "kaos";
                         } else {
                           echo "Tipe Jasa Produk Tidak Diketahui";
