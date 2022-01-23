@@ -47,6 +47,32 @@ Here are the resources that I use in this project:
 - [x] Generate Report
 - [x] Price Total
 
+## Screenshoots
+
+- index.php views
+
+![index.php](screenshoots/index.png)
+
+- login views
+
+![login.php](screenshoots/login.png)
+
+- admin side
+
+![admin side](screenshoots/admin.png)
+
+- cashier side
+
+![cashier side](screenshoots/cashier.png)
+
+- owner side
+
+![owner side](screenshoots/owner.png)
+
+- generate report
+
+![generate report](screenshoots/report.png)
+
 ## Authors
 
 Contributors names and contact info
